@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/mainPageFragment">
+
+    <fragment
+        android:id="@+id/mainPageFragment"
+        android:name="com.irempakyurek.jewellux.fragment.MainPageFragment"
+        android:label="fragment_main_page"
+        tools:layout="@layout/fragment_main_page">
+        <action
+            android:id="@+id/action_mainPageFragment_to_addProductFragment"
+            app:destination="@id/addProductFragment" />
+        <action
+            android:id="@+id/action_mainPageFragment_to_productDetailFragment"
+            app:destination="@id/productDetailFragment" />
+        <action
+            android:id="@+id/action_mainPageFragment_to_promotionsFragment"
+            app:destination="@id/promotionsFragment" />
+        <action
+            android:id="@+id/action_mainPageFragment_to_basketFragment"
+            app:destination="@id/basketFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addProductFragment"
+        android:name="com.irempakyurek.jewellux.fragment.AddProductFragment"
+        android:label="fragment_add_product"
+        tools:layout="@layout/fragment_add_product" />
+    <fragment
+        android:id="@+id/productDetailFragment"
+        android:name="com.irempakyurek.jewellux.fragment.ProductDetailFragment"
+        android:label="ProductDetailFragment"
+        tools:layout="@layout/fragment_product_detail">
+        <argument
+            android:name="productObject"
+            app:argType="com.irempakyurek.jewellux.entity.Products" />
+    </fragment>
+    <fragment
+        android:id="@+id/promotionsFragment"
+        android:name="com.irempakyurek.jewellux.fragment.PromotionsFragment"
+        android:label="fragment_promotions"
+        tools:layout="@layout/fragment_promotions" >
+        <action
+            android:id="@+id/action_promotionsFragment_to_productDetailFragment"
+            app:destination="@id/productDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.irempakyurek.jewellux.fragment.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/basketFragment"
+        tools:layout="@layout/fragment_basket"
+        android:name="com.irempakyurek.jewellux.fragment.BasketFragment"
+        android:label="BasketFragment" />
+</navigation>
