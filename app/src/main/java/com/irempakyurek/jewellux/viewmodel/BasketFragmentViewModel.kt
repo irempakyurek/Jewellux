@@ -28,7 +28,7 @@ class BasketFragmentViewModel:ViewModel() {
         return prepo.getDiscountedPrice(urun_fiyat)
     }
 
-    fun increasePrice(urun_fiyat:String, count:Int, indirimli_mi:Int, increase:Boolean):String{
+    fun newPrice(urun_fiyat:String, count:Int, indirimli_mi:Int, increase:Boolean):String{
         return prepo.getNewPrice(urun_fiyat, count, indirimli_mi, increase)
     }
 }
