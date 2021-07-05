@@ -69,7 +69,7 @@ class BasketAdapter(
         view.cvIncrease.setOnClickListener {
             count++
             view.count = count.toString()
-            view.newPrice = viewModel.increasePrice(product.urun_fiyat, count, product.urun_indirimli_mi, true)
+            view.newPrice = viewModel.newPrice(product.urun_fiyat, count, product.urun_indirimli_mi, true)
             view.discountedPrice = viewModel.getDiscountedPrice(view.newPrice.toString())
         }
 
@@ -77,7 +77,7 @@ class BasketAdapter(
             if (count != 1) {
                 count--
                 view.count = count.toString()
-                view.newPrice = viewModel.increasePrice(product.urun_fiyat, count, product.urun_indirimli_mi,false)
+                view.newPrice = viewModel.newPrice(product.urun_fiyat, count, product.urun_indirimli_mi,false)
                 view.discountedPrice = viewModel.getDiscountedPrice(view.newPrice.toString())
             } else {
                 viewModel.removeProductFromBasket(product.id, 0,mContext)

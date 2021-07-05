@@ -12,6 +12,9 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.math.RoundingMode
 import java.text.DecimalFormat
+import java.text.DecimalFormatSymbols
+import java.util.*
+import kotlin.collections.ArrayList
 
 class ProductsDaoRepo {
     private val personsList: MutableLiveData<List<Persons>>
@@ -110,7 +113,7 @@ class ProductsDaoRepo {
 
                 val df = DecimalFormat("##.##")
                 df.roundingMode = RoundingMode.CEILING
-                basketTotalPrice.value = df.format(count)
+                basketTotalPrice.value = String.format("%.3f", count)
                 basketTotalPriceDouble = count
             }
 
@@ -122,7 +125,7 @@ class ProductsDaoRepo {
         val doublePrice = urun_fiyat.toDouble()
         val discount = doublePrice.div(4)
         val newPrice = doublePrice.minus(discount)
-        val df = DecimalFormat("##.##")
+        val df = DecimalFormat("#.##", DecimalFormatSymbols(Locale.US))
         df.roundingMode = RoundingMode.CEILING
         return df.format(newPrice)
     }
@@ -131,7 +134,7 @@ class ProductsDaoRepo {
         val doublePrice = price.toDouble()
         val newPrice = doublePrice.times(count)
         val discountedPrice = doublePrice.minus(doublePrice.div(4))
-        val df = DecimalFormat("##.##")
+        val df = DecimalFormat("#.##", DecimalFormatSymbols(Locale.US))
         df.roundingMode = RoundingMode.CEILING
         val discountedNewPrice = newPrice.minus(newPrice.div(4))
         if (indirimli_mi == 1) {
